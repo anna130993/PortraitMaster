@@ -34,7 +34,7 @@ exports.add = async (req, res) => {
     }
 
   } catch(err) {
-    res.status(500).json(err.response.data.message);
+    res.status(500).json({message: err.message});
   }
 
 };
@@ -46,7 +46,7 @@ exports.loadAll = async (req, res) => {
   try {
     res.json(await Photo.find());
   } catch(err) {
-    res.status(500).json(err);
+    res.status(500).json({message: err.message});
   }
 
 };
@@ -77,7 +77,7 @@ exports.vote = async (req, res) => {
       res.send({ message: 'OK' });
     }
   } catch(err) {
-    res.status(500).json(err.response.data.message);
+    res.status(409).json({message: err.message});
   }
 
 };
